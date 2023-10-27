@@ -1,0 +1,54 @@
+html
+{
+	width: 100%;
+	height: 100%;
+}
+
+body
+{
+	width: 100%;
+	height: 100%;
+}
+
+#app
+{
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+
+	overflow-y: scroll;
+}
+
+py-config {
+  display: none;
+}
+py-script:not(:defined) {
+  display: none;
+}
+py-repl:not(:defined) {
+  display: none;
+}
+py-title:not(:defined) {
+  display: none;
+}
+py-inputbox:not(:defined) {
+  display: none;
+}
+py-button:not(:defined) {
+  display: none;
+}
+py-box:not(:defined) {
+  display: none;
+}
+.py-pop-up {
+	display: none !important;
+}
+.py-terminal
+{
+	position: relative !important;
+	background: none !important;
+}
