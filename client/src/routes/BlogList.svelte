@@ -7,7 +7,7 @@
 	//make this async fetching
 	async function bloglists()
 	{
-		const response = await fetch("http://the-paradox-post.vercel.app/api/bloglists");
+		const response = await fetch("http://the-paradox-post-api.vercel.app/api/bloglists");
 		const content = await response.json();
 
 		return content;
