@@ -2,7 +2,7 @@
 	//CODE to FETCH RECENT POSTS
 	async function get_posts()
 	{
-		const URL = "http://127.0.0.1:5000/api/recentposts";
+		const URL = "https://the-paradox-post-api.vercel.app/api/recentposts";
 		const response = await fetch(URL);
 		const posts = await response.json();
 		return posts;
