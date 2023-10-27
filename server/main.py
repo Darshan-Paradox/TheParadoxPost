@@ -2,7 +2,7 @@ from flask import Flask, request, make_response
 app = Flask(__name__)
 
 def CORS(response):
-    response.headers.add("Access-Control-Allow-Origin", "https://the-paradox-post.vercel.app/")
+    response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Methods", "*")
     response.headers.add("Access-Control-Allow-Headers", "*")
     return response
