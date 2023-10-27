@@ -8,6 +8,10 @@ def CORS(response):
     response.headers.add("Access-Control-Allow-Headers", "*")
     return response
 
+@app.route("/test")
+def test():
+    return "PASSED"
+
 @app.route("/api/recentposts")
 def recent_posts():
     posts = {
