@@ -7,8 +7,8 @@
 	{
 		let component;
 		if (params.cat == "physics")
-			if (params.id == "PlaneWaveFreeParticle")
-				component = (await import(`../blogs/physics/PlaneWaveFreeParticle.svelte.md`)).default;
+			if (params.id == "PlaneWavesFreeParticle")
+				component = (await import(`../blogs/physics/PlaneWavesFreeParticle.svelte.md`)).default;
 		return component;
 	}
 
