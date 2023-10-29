@@ -44,7 +44,7 @@
 
 			{#each titles[topic] as blog}
 				<li>
-					<a href="">
+					<a href="/blog/physics/PlaneWavesFreeParticle">
 						{blog}
 					</a>
 				</li>
