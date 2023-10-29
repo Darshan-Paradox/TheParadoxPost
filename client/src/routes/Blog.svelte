@@ -5,7 +5,10 @@
 
 	async function get_blog()
 	{
-		const component = (await import(`../blogs/${params.cat}/${params.id}.svelte.md`)).default;
+		let component;
+		if (params.cat == "physics")
+			if (params.id == "PlaneWaveFreeParticle")
+				component = (await import(`../blogs/physics/PlaneWaveFreeParticle.svelte.md`)).default;
 		return component;
 	}
 
