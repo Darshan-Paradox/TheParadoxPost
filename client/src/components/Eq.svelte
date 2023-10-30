@@ -11,4 +11,10 @@
 		equation = display(eq);
 </script>
 
-{@html equation}
+{#if block}
+	<p>
+		{@html equation}
+	</p>
+{:else}
+	{@html equation}
+{/if}
