@@ -16,7 +16,7 @@
 		return component;
 	}
 
-	let blog = null;
+	let blog = get_blog();
 </script>
 
 {#await blog}
