@@ -17,9 +17,11 @@
 	}
 
 	let blog = null;
-
-	onMount(async () => {blog = await get_blog()})
 </script>
 
-<svelte:component this={blog}>
-</svelte:component>
+{#await blog}
+	<progress></progress>
+{:then component}
+	<svelte:component this={blog}>
+	</svelte:component>
+{/await}
