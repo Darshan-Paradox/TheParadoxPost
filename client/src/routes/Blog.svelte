@@ -20,8 +20,18 @@
 </script>
 
 {#await blog}
-	<progress></progress>
+	<div class="loading">
+		<progress></progress>
+	</div>
 {:then component}
 	<svelte:component this={component}>
 	</svelte:component>
 {/await}
+
+<style>
+	.loading
+	{
+		width: 25%;
+		height: 100%;
+	}
+</style>
