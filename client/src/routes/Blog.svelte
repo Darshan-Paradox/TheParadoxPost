@@ -22,6 +22,6 @@
 {#await blog}
 	<progress></progress>
 {:then component}
-	<svelte:component this={blog}>
+	<svelte:component this={component}>
 	</svelte:component>
 {/await}
