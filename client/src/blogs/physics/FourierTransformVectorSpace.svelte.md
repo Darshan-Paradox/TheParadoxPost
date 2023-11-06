@@ -16,6 +16,7 @@
 	const exp_coeff = "a_0 = 1, a_1 = 1, a_2 = \\cfrac{1}{2!}, a_3 = \\cfrac{1}{3!}, a_{n} = \\cfrac{1}{n!}";
 	const exp_apprx = "e^x \\approx 1 + x + \\cfrac{x^2}{2!}";
 	const fourier_series = "f(x) = \\sum_0^\\infty a_n\\cdot cos(nx) + b_n\\cdot sin(nx)";
+	const fourier_coeffs= "\\cfrac{1}{T}\\int^T_0f(x)cos(nx)dx = a_n,\\ \\  \\cfrac{1}{T}\\int^T_0f(x)sin(nx)dx = b_n";
 
 	const refs = ["https://youtu.be/3d6DsjIBzJ4"];
 </script>
@@ -82,7 +83,7 @@ Taylor expansion:
 
 Taylor coefficients are : <Eq eq={exp_coeff}/>, hence we require an infinite dimensional polynomial space to represent this.
 
-Since it isn't possible to represent an infinite dimensional space, let us consider an approximation of sine, upto three "non-zero" coefficient terms, i.e. <Eq eq="a_0, a_1, a_2"/>.
+Let us consider an approximation of exponential, upto three "non-zero" coefficient terms, i.e. <Eq eq="a_0, a_1, a_2"/>.
 With only these three terms, we can represent sine as a single point in 3D space, where <Eq eq="x = x^0, y = x^1, z = x^2"/>.
 
 <Eq eq={exp_apprx} block/>
@@ -116,9 +117,29 @@ In graph: <em>5th order taylor polynomial</em> there are 8 random points generat
 </small>
 <hr>
 
+##### Fourier Series and Vector Spaces
+
+Similar to taylor series we can write any periodic <em data-tooltip="well-behaved">function</em> as sum of cosines and sines of different <em data-tooltip="integer multiple of fundamental frequency" data-placement="bottom">harmonics</em>.
+
 <Eq eq={fourier_series} block/>
 
+The trick here to find the coefficient is to integrate <Eq eq="f(x)"/> after taking it's product with the oscillatory component i.e. <Eq eq="cos(nx)"/> or <Eq eq="sin(nx)"/>.
+
+<Eq eq={fourier_coeffs} block/>
+
+One way to realise fourier series is wrapping the periodic function around a circle with angular frequency of <Eq eq="n"/> and then finding the position of center of mass.<sup>[[1]](#1)</sup>
+
+But going back to the analogy with Taylor Series, similar to that any function can be represented by it's fourier coefficients.
+The only problem is that, we need 2 infinite spaces, one for cosines and another for sine.
+
 <Frame name="fs_kspace" path={path}/>
+<small>
+
+Tip: use auto-scale for better graph
+
+In graph: <em>5th order fourier series</em> there are 8 random points generated in fourier space. Each point represents a sine wave (in blue) and cosine wave (in red) with x, y, z,size,color corresponding to <Eq eq="a_0/b_0 ... a_4/b_4"/>.
+
+</small>
 
 <hr>
 <Ref refs={refs}/>
