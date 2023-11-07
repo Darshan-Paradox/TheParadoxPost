@@ -17,6 +17,10 @@
 	const exp_apprx = "e^x \\approx 1 + x + \\cfrac{x^2}{2!}";
 	const fourier_series = "f(x) = \\sum_0^\\infty a_n\\cdot cos(nx) + b_n\\cdot sin(nx)";
 	const fourier_coeffs= "\\cfrac{1}{T}\\int^T_0f(x)cos(nx)dx = a_n,\\ \\  \\cfrac{1}{T}\\int^T_0f(x)sin(nx)dx = b_n";
+	const fourier_cosine_vector = "f(x) = \\left[{\\begin{array}{cccc} cos(0x) & cos(1x) & \\cdots & cos(nx) \\end{array}}\\right]     \\cdot     \\left[{\\begin{array}{c} a_0 \\\\ a_1 \\\\ \\vdots \\\\ a_n \\end{array}}\\right]";
+	const fourier_sine_vector = "\\left[{\\begin{array}{cccc} sin(0x) & sin(1x) & \\cdots & sin(nx) \\end{array}}\\right]     \\cdot     \\left[{\\begin{array}{c} b_0 \\\\ b_1 \\\\ \\vdots \\\\ b_n \\end{array}}\\right]";
+	const complex_coeffs = "c_n = \\left\\{ {\\begin{array}{ll} \\cfrac{a_n - ib_n}{2} & n \\ge 0 \\\\ \\cfrac{a_{-n} + ib_{-n}}{2} & n < 0 \\end{array}} \\right.";
+	const freq_basis = "\\left[\\begin{array}{cccc} e^{ix} & e^{i2x} & \\cdots & e^{inx}\\end{array}\\right]";
 
 	const refs = ["https://youtu.be/3d6DsjIBzJ4"];
 </script>
@@ -24,6 +28,8 @@
 <main>
 
 ### Mapping Fourier Transform and Series
+
+<img src={`${path}/joseph_fourier.webp`} alt="Joseph Fourier"/>
 
 <hr>
 <small> In this blog we will investigate a new way of visualising Fourier transform and Series which will help us in further understanding the nature of Quantum Mechanics. </small>
@@ -132,14 +138,33 @@ One way to realise fourier series is wrapping the periodic function around a cir
 But going back to the analogy with Taylor Series, similar to that any function can be represented by it's fourier coefficients.
 The only problem is that, we need 2 infinite spaces, one for cosines and another for sine.
 
+<Eq eq={fourier_cosine_vector + "+" + fourier_sine_vector} block/>
+
 <Frame name="fs_kspace" path={path}/>
 <small>
 
 Tip: use auto-scale for better graph
 
-In graph: <em>5th order fourier series</em> there are 8 random points generated in fourier space. Each point represents a sine wave (in blue) and cosine wave (in red) with x, y, z,size,color corresponding to <Eq eq="a_0/b_0 ... a_4/b_4"/>.
+In graph: <em>5th order fourier series</em> there are 8 random points generated in fourier space. Each point represents a series (harmonics) of sine wave (in blue) and cosine wave (in red) with x, y, z,size,color corresponding to <Eq eq="a_0/b_0 ... a_4/b_4"/>.
 
 </small>
+
+Since fourier series breaks a periodic function in harmonics of sines and cosines, we can call fourier space as frequecy space, as it is weighted sums of different frequencies of waves (harmonics).
+
+To resolve the problem of 2 frequency spaces, for sines and cosines we take the help of complex numbers.
+Using Euler's formula we write <Eq eq="sin"/> and <Eq eq="cos"/> in terms of <Eq eq="e"/>.
+
+<Eq eq={String.raw`sin(nx) = \cfrac{e^{inx} - e^{-inx}}{2i}, \ \ cos(nx) = \cfrac{e^{inx} + e^{-inx}}{2} \ \ \  (1)`} block/>
+
+On simplifying using (1):
+<Eq eq={fourier_series + String.raw`= \sum_0^\infty c_n\cdot e^{inx}`} block/>
+<small>
+
+Here <Eq eq="c_n"/> is complex coefficient, with relation to <Eq eq="a_n, b_n"/> being: <Eq eq={complex_coeffs}/>
+
+</small>
+
+Now we only have one frequency space with <Eq eq={freq_basis}/> as its basis.
 
 <hr>
 <Ref refs={refs}/>
@@ -151,8 +176,10 @@ In graph: <em>5th order fourier series</em> there are 8 random points generated 
 	{
 		padding-top: 5%;
 		padding-bottom: 5%;
-		padding-left: 25%;
-		padding-right: 25%;
+		padding-left: 20%;
+		padding-right: 20%;
+
+		width: 100%;
 
 		display: flex;
 		flex-flow: column;
@@ -164,5 +191,12 @@ In graph: <em>5th order fourier series</em> there are 8 random points generated 
 	hr
 	{
 		width: 100%;
+	}
+	img
+	{
+		width: 100%;
+		height: 50%;
+		object-fit: none;
+		object-position: center 30%;
 	}
 </style>

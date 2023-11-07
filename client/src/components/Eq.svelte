@@ -12,9 +12,19 @@
 </script>
 
 {#if block}
-	<p>
+	<p id="eq">
 		{@html equation}
 	</p>
 {:else}
 	{@html equation}
 {/if}
+
+<style>
+	#eq
+	{
+		margin: 0px;
+		padding: 0px;
+		width: 100%;
+		align-self: center;
+	}
+</style>
