@@ -27,17 +27,50 @@
 
 <main>
 
-### Mapping Fourier Transform and Series
+### Fourier Transform to Vector Spaces
 
-<img src={`${path}/joseph_fourier.webp`} alt="Joseph Fourier"/>
+<img class="joseph" src={`${path}/joseph_fourier.webp`} alt="Joseph Fourier"/>
 
 <hr>
-<small> In this blog, we will investigate a new way of visualising Fourier transform and Series, which will help us further understand Quantum Mechanics' nature. </small>
+<small>
+This blog will investigate a new way of visualising Fourier transform and Series, which will help us further understand Quantum Mechanics’ nature.
+</small>
 <hr>
+
+##### Different representation and why you should be interested in this?
+
+Different representations help us understand a concept much more clearly and let us jump to advanced structures which are based on more abstractions.
+
+Some representations also lead us to generalise a fundamental concept so that it could be helpful in other fields of interest.
+
+Let us take an example to understand different representations of a basic function <Eq eq="f(x) = sin(x)"/>.
+
+One might consider it the <Eq eq="sin(x) = \cfrac{`{opposite}`}{`{hypotenuse}`}\ "/> w.r.t to a right triangle.
+
+But another way to think is assuming a particle waking on a circular path. The height from the circle’s centre is represented by the sine of the angle subtended by the sector covered during the walk.
+
+This lets us generalise sine waves to circular motion, making sine waves a motion projection.
+This also gets us to the area definition of sine, leading us to hyperbolic sines.
+
+Another way to represent <Eq eq="sin(x)"/> is considering all inputs <Eq eq="x {`\\in`} {`\\R`}"/>, which outputs some value <Eq eq="y"/>, then plotting the same on a cartesian plane.
+
+&nbsp <Eq eq="sin(x)"/> can also be represented by a vector, <Eq eq="{`\\left[\\begin{array}{c} x \\\\ sin(x) \\end{array}\\right]`}"/>, which is the position of a particle on a sine graph w.r.t origin in a cartesian plane.
+
+All of this leads to some new ways of thinking about its underlying nature, from triangles to circles to circular motion to hyperbolic sines to cartesian plane to vectors.
+
+##### Vector space representation of anything
+
+There is a civilisation where everyone is recognised through their weight and height, and no two person has the same height and weight.
+
+Everyone has a weight distribution across their height; some are more weighted at the bottom, some at the centre, etc.
+
+<img class="human_body" src={`${path}/human_body_dist.png`} alt="Joseph Fourier"/>
+
+The Chief of the civilisation wants to take a population census and represent it. The most logical way to describe everyone on a plot is to consider total weight rather than the whole weight distribution across a person’s height.
 
 ##### Taylor Series and Vector Spaces
 
-Before getting into frequency space and Fourier transform, let us take a simple example of *Taylor's Series*.
+Before getting into frequency space and Fourier transform, let us take a simple example of *Taylor’s Series*.
 
 Any *"well-behaved"* function can be written as an infinite series of polynomials.
 <Eq eq={taylor_series} block/>
@@ -49,7 +82,7 @@ One way of realising the Taylor series is that it is approximating a function wi
 However, there is another way of thinking about the Taylor series, a more *abstract* way.
 
 Any <em data-tooltip="well-behaved">function</em> can be written as a **unique** Taylor Series. This also implies that every <em data-tooltip="well-behaved">function</em> is represented by its Taylor Series.
-Since every Taylor Series is a polynomial series, one series is different from the other due to the coefficients. Thus:
+Since every Taylor Series is a polynomial, one series differs due to the coefficients. Thus:
 
 "Every <em data-tooltip="well-behaved">function</em> is represented by an infinite list of its Taylor Coefficients."
 
@@ -62,7 +95,7 @@ If we take this representation as a vector in polynomial space, i.e. each basis 
 **Examples**
 - Let <Eq eq="f(x) = 1 + 3x + 2x^2"/>:
 
-Taylor coefficients are: <Eq eq="a_0 = 1, a_1 = 3, a_2 = 2, a_3 ... a_n = 0"/>. Hence, we require only 3-dimensional polynomial space to represent this.
+Taylor coefficients are: <Eq eq="a_0 = 1, a_1 = 3, a_2 = 2, a_3 … a_n = 0"/>. Hence, we require only 3-dimensional polynomial space to represent this.
 
 <Frame name="taylor_ex1" path={path}/>
 
@@ -74,7 +107,7 @@ Taylor expansion:
 
 Taylor coefficients are <Eq eq={sin_coeff}/>. Hence, we require an infinite dimensional polynomial space to represent this.
 
-Since it isn't possible to represent an infinite dimensional space, let us consider an approximation of sine, up to three "non-zero" coefficient terms, i.e. <Eq eq="a_1, a_3, a_5"/>.
+Since it isn’t possible to represent an infinite dimensional space, let us consider an approximation of sine, up to three "non-zero" coefficient terms, i.e. <Eq eq="a_1, a_3, a_5"/>.
 With only these three terms, we can represent sine as a single point in 3D space, where <Eq eq="x = x^1, y = x^3, z = x^5"/>.
 
 <Eq eq={sin_apprx} block/>
@@ -104,21 +137,22 @@ Representing all the examples on single polynomial-space <Eq eq="x = x^0, y = x^
 
 <small>
 
-	Can you guess which point represents which curve?<span data-tooltip="red: sine,  yellow: exponential,  blue: polynomial" data-placement="right">...</span>
+	Can you guess which point represents which curve?<span data-tooltip="red: sine,  yellow: exponential,  blue: polynomial" data-placement="right">…</span>
 
 </small>
 <hr>
 
 **Representing more terms in Taylor space**
+
 <Frame name="taylor_space" path={path}/>
 
 <small>
 
 Tip: use auto-scale for a better graph
 
-In the above graph: <em>3rd order Taylor polynomial</em> there are 8 random points generated in Taylor space. Each point represents a polynomial with x, y, z corresponding to <Eq eq="a_0"/> <Eq eq="a_1"/> <Eq eq="a_2"/>.
+In the above graph: <em>3rd order Taylor polynomial</em>, there are 8 random points generated in Taylor space. Each point represents a polynomial with x, y, z corresponding to <Eq eq="a_0"/> <Eq eq="a_1"/> <Eq eq="a_2"/>.
 
-In graph <em>5th order Taylor polynomial</em> there are 8 random points generated in Taylor space. Each point represents a polynomial with x, y, z, size, and colour corresponding to <Eq eq="a_0 ... a_4"/>.
+In graph <em>5th order Taylor polynomial</em> there are 8 random points generated in Taylor space. Each point represents a polynomial with x, y, z, size, and colour corresponding to <Eq eq="a_0 … a_4"/>.
 
 </small>
 <hr>
@@ -143,14 +177,15 @@ The only problem is that we need 2 infinite spaces, one for cosines and another 
 <Frame name="fs_kspace" path={path}/>
 <small>
 
-In graph <em>5th order Fourier series</em> there are 8 random points generated in Fourier space. Each point represents a series (harmonics) of sine wave (in blue) and cosine wave (in red) with x, y, z, size, and colour corresponding to <Eq eq="a_0"/> or <Eq eq="b_0 ... a_4"/> or <Eq eq="b_4"/>.
+In graph <em>5th order Fourier series</em> there are 8 random points generated in Fourier space. Each point represents a series (harmonics) of sine wave (in blue) and cosine wave (in red) with x, y, z, size, and colour corresponding to <Eq eq="a_0"/> or <Eq eq="b_0 … a_4"/> or <Eq eq="b_4"/>.
 
 </small>
+<hr>
 
 Since the Fourier series breaks a periodic function in harmonics of sines and cosines, we can call Fourier space frequency space, as it is a weighted sum of different frequencies of waves (harmonics).
 
 To resolve the problem of 2 frequency spaces, for sines and cosines, we take the help of complex numbers.
-Using Euler's formula, we write <Eq eq="sin"/> and <Eq eq="cos"/> in terms of <Eq eq="e"/>.
+Using Euler’s formula, we write <Eq eq="sin"/> and <Eq eq="cos"/> in terms of <Eq eq="e"/>.
 
 <Eq eq={String.raw`sin(nx) = \cfrac{e^{inx} - e^{-inx}}{2i}, \ \ cos(nx) = \cfrac{e^{inx} + e^{-inx}}{2} \ \ \  (1)`} block/>
 
@@ -186,15 +221,23 @@ Now we only have one frequency space with <Eq eq={freq_basis}/> as its basis, <E
 		overflow-x: hidden;
 		scroll: smooth;
 	}
+
 	hr
 	{
 		width: 100%;
 	}
-	img
+
+	.joseph
 	{
 		width: 100%;
 		height: 50%;
 		object-fit: none;
 		object-position: center 30%;
+	}
+
+	.human_body
+	{
+		width: 40%;
+		align-self: center;
 	}
 </style>
