@@ -45,7 +45,7 @@ Some representations also lead us to generalise a fundamental concept so that it
 
 Let us take an example to understand different representations of a basic function <Eq eq="f(x) = sin(x)"/>.
 
-One might consider it the <Eq eq="sin(x) = \cfrac{`{opposite}`}{`{hypotenuse}`}\ "/> w.r.t to a right triangle.
+One might consider it the <Eq eq="sin(x) = \cfrac{`{\\text{opposite}}`}{`{\\text{hypotenuse}}`}\ "/> w.r.t to a right triangle.
 
 But another way to think is assuming a particle waking on a circular path. The height from the circle’s centre is represented by the sine of the angle subtended by the sector covered during the walk.
 
