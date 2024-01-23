@@ -15,10 +15,10 @@
 <h3>Recent Articles</h3>
 {#await posts then posts_list}
 	<ul>
-		{#each posts_list.title as text}
+		{#each posts_list as post}
 			<li>
-				<a href="">
-					{text}
+				<a href={post.link}>
+					{post.title}
 				</a>
 			</li>
 		{/each}

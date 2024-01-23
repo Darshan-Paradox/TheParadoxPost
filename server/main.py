@@ -1,5 +1,20 @@
 from flask import Flask, request, make_response
+from sqlalchemy import create_engine, select
+from sqlalchemy.orm import sessionmaker
+
+from models.recent import *
+from repository.recents import *
+
 app = Flask(__name__)
+engine = create_engine("sqlite:///data.db", echo=True)
+
+Base.metadata.create_all(bind=engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+posts = session.execute(select(Recents)).all()
+print(posts)
 
 def CORS(response):
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -13,6 +28,8 @@ def test():
 
 @app.route("/api/recentposts")
 def recent_posts():
+    posts = get_recentblogs(session)
+    '''
     posts = {
         "title": [
             "Why plane waves cannot represent free particles?",
@@ -20,6 +37,7 @@ def recent_posts():
             "Continuous vector spaces"
         ]
     }
+    '''
     response = make_response(posts)
     return CORS(response)
 
